@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Sunset Split — GTA 6 Cover Maker</title>
+<meta name="description" content="Turn any photo and a caption into GTA-style multi-panel cover art with a Vice City sunset or neon grade. Offline, free, exports PNG.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">VS</span>
+    <div>
+      <h1>Vice Sunset Split</h1>
+      <p>Turn any photo into GTA-style cover art — offline, no upload, free.</p>
+    </div>
+  </div>
+  <button id="shuffle" type="button" class="btn ghost">Surprise me</button>
+</header>
+
+<main class="app">
+  <section class="preview-col">
+    <div class="preview-wrap">
+      <canvas id="preview" width="640" height="800" aria-label="Cover preview"></canvas>
+    </div>
+    <p id="panelLabel" class="hint">Panel 1 — drag to pan, slider to zoom</p>
+    <div class="export-row">
+      <button id="exportOne" type="button" class="btn primary">Export PNG</button>
+      <button id="exportAll" type="button" class="btn">Export all three sizes</button>
+    </div>
+    <p id="exportStatus" class="hint" role="status"></p>
+  </section>
+
+  <section class="controls-col">
+    <div class="card">
+      <h2>1 · Photo</h2>
+      <label class="file-btn" for="photoFile">Load your photo
+        <input id="photoFile" type="file" accept="image/*">
+      </label>
+      <button id="useSample" type="button" class="btn small">Use sample photo instead</button>
+      <label class="row">
+        <span>Sample scene</span>
+        <select id="sampleSelect"></select>
+      </label>
+      <label class="row check">
+        <input id="samePhoto" type="checkbox" checked>
+        <span>Same photo in all panels</span>
+      </label>
+      <p class="hint">Your photo never leaves this machine — everything runs in your browser.</p>
+    </div>
+
+    <div class="card">
+      <h2>2 · Layout</h2>
+      <div id="layoutBtns" class="chips"></div>
+      <p class="hint">Click a panel in the preview to select it, then drag to pan.</p>
+      <label class="row">
+        <span>Zoom</span>
+        <input id="zoom" type="range" min="100" max="300" value="100">
+        <span id="zoomVal">100%</span>
+      </label>
+    </div>
+
+    <div class="card">
+      <h2>3 · Sunset grade</h2>
+      <div id="gradeBtns" class="chips"></div>
+      <label class="row check">
+        <input id="grain" type="checkbox" checked>
+        <span>Film grain</span>
+      </label>
+      <label class="row check">
+        <input id="vignette" type="checkbox" checked>
+        <span>Vignette</span>
+      </label>
+    </div>
+
+    <div class="card">
+      <h2>4 · Caption</h2>
+      <label class="field">
+        <span>Title</span>
+        <input id="title" type="text" value="VICE SUNSET" maxlength="24">
+      </label>
+      <label class="field">
+        <span>Subtitle</span>
+        <input id="subtitle" type="text" value="Neon nights on the boulevard" maxlength="48">
+      </label>
+      <label class="field">
+        <span>Badge</span>
+        <input id="badge" type="text" value="LEONIDA" maxlength="12">
+      </label>
+    </div>
+
+    <div class="card">
+      <h2>5 · Export size</h2>
+      <div id="sizeBtns" class="chips"></div>
+      <p class="hint">Square 1080×1080 · Portrait 1080×1350 · Landscape 1920×1080. “Export all three” downloads one PNG per size.</p>
+    </div>
+
+    <p class="fineprint">Original art made in code — no Rockstar Games logo, artwork or fonts. Built for make.fun’s “Make GTA 6 Cover Art” bounty.</p>
+  </section>
+</main>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

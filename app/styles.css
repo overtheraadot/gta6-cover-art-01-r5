@@ -1,0 +1,193 @@
+:root {
+  --bg: #12081f;
+  --panel: #1d1030;
+  --panel2: #251641;
+  --ink: #fff6ec;
+  --muted: #c9b8e0;
+  --line: #3a2560;
+  --pink: #ff2e63;
+  --orange: #ff9a3d;
+  --teal: #22e6ff;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: radial-gradient(1200px 600px at 80% -10%, #4a1550 0%, transparent 60%),
+    radial-gradient(900px 500px at 0% 110%, #7a2b12 0%, transparent 55%),
+    var(--bg);
+  color: var(--ink);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  min-height: 100vh;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand { display: flex; align-items: center; gap: 14px; }
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--pink), var(--orange));
+  font-family: "Arial Black", Arial, sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  color: #fff;
+}
+.brand h1 {
+  margin: 0;
+  font-family: "Arial Black", Arial, sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.5px;
+}
+.brand p { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+
+.app {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+  gap: 24px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.preview-col { min-width: 0; }
+.preview-wrap {
+  background: #000;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px;
+  display: grid;
+  place-items: center;
+}
+#preview {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  cursor: grab;
+  touch-action: none;
+}
+#preview:active { cursor: grabbing; }
+
+.hint { color: var(--muted); font-size: 13px; line-height: 1.5; }
+.export-row { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+
+.btn {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--panel2);
+  color: var(--ink);
+  border-radius: 10px;
+  padding: 11px 18px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn:hover { border-color: var(--pink); }
+.btn.primary {
+  background: linear-gradient(135deg, var(--pink), var(--orange));
+  border: none;
+}
+.btn.ghost { background: transparent; }
+.btn.small { padding: 8px 12px; font-size: 13px; }
+
+.controls-col { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+.card h2 {
+  margin: 0 0 12px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  border: 1px solid var(--line);
+  background: var(--panel2);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 8px 13px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.chip.active {
+  background: linear-gradient(135deg, var(--pink), var(--orange));
+  border: none;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  font-size: 14px;
+}
+.row.check { cursor: pointer; }
+.row span:first-child { min-width: 86px; color: var(--muted); }
+.row input[type="range"] { flex: 1; accent-color: var(--pink); }
+.row select {
+  flex: 1;
+  background: var(--panel2);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.field { display: block; margin-top: 12px; }
+.field span {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.field input {
+  width: 100%;
+  background: var(--panel2);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 15px;
+}
+
+.file-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--pink), var(--orange));
+  border-radius: 10px;
+  padding: 11px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 8px;
+}
+.file-btn input { display: none; }
+
+.fineprint { color: var(--muted); font-size: 12px; line-height: 1.6; }
+
+/* Screenshot mode: cover fills the window, editor hidden. */
+body.shot-cover { background: #000; margin: 0; overflow: hidden; }
+body.shot-cover .topbar,
+body.shot-cover .app { display: none; }
+body.shot-cover #shotCanvas { display: block; }
+
+@media (max-width: 860px) {
+  .app { grid-template-columns: 1fr; }
+}
